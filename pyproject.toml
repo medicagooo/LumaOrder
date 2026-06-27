@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lumaorder"
+version = "0.1.0"
+description = "LumaOrder local image similarity sorter with CLI and glass style web UI."
+requires-python = ">=3.10"
+dependencies = ["Pillow>=12.2.0"]
+readme = "README.md"
+
+[project.scripts]
+lumaorder = "glass_image_sorter.cli:main"
+lumaorder-web = "glass_image_sorter.web:main"
+glass-image-sorter = "glass_image_sorter.cli:main"
+glass-image-sorter-web = "glass_image_sorter.web:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

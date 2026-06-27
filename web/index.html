@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LumaOrder</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Local Tool</p>
+            <h1>LumaOrder</h1>
+          </div>
+          <div class="status-pill" id="serverStatus">Idle</div>
+        </header>
+
+        <section class="grid">
+          <form class="panel controls" id="jobForm">
+            <div class="field wide">
+              <label for="rootPath">Root Path</label>
+              <input id="rootPath" name="rootPath" value="D:\photobackup\review_samples" spellcheck="false" />
+            </div>
+
+            <div class="field">
+              <label for="threshold">Threshold</label>
+              <input id="threshold" name="threshold" value="auto" spellcheck="false" />
+            </div>
+
+            <div class="field">
+              <label for="prefixWidth">Prefix Digits</label>
+              <input id="prefixWidth" name="prefixWidth" type="number" min="1" max="9" value="4" />
+            </div>
+
+            <div class="field wide">
+              <label for="excludeDirs">Exclude Dirs</label>
+              <input id="excludeDirs" name="excludeDirs" value="review_samples" spellcheck="false" />
+            </div>
+
+            <div class="field wide">
+              <label for="outputPath">CSV Output</label>
+              <input id="outputPath" name="outputPath" placeholder="Leave blank for root\rename_preview_*.csv" spellcheck="false" />
+            </div>
+
+            <div class="field wide">
+              <label for="contactSheets">Contact Sheets</label>
+              <input id="contactSheets" name="contactSheets" placeholder="Optional output folder" spellcheck="false" />
+            </div>
+
+            <label class="toggle">
+              <input id="stripPrefix" type="checkbox" checked />
+              <span></span>
+              Strip Existing Prefix
+            </label>
+
+            <div class="actions">
+              <button class="primary" id="dryRunButton" type="button">Dry Run</button>
+              <button class="danger" id="applyButton" type="button" disabled>Apply</button>
+            </div>
+          </form>
+
+          <section class="panel summary-card">
+            <div class="card-head">
+              <p class="eyebrow">Summary</p>
+              <button class="ghost" id="refreshExamples" type="button">Examples</button>
+            </div>
+            <div class="stats">
+              <div><span id="directories">0</span><small>Dirs</small></div>
+              <div><span id="planned">0</span><small>Images</small></div>
+              <div><span id="renamed">0</span><small>Renamed</small></div>
+              <div><span id="conflicts">0</span><small>Conflicts</small></div>
+            </div>
+            <div class="artifact-list" id="artifacts"></div>
+          </section>
+
+          <section class="panel log-panel">
+            <div class="card-head">
+              <p class="eyebrow">Progress</p>
+              <span id="jobId"></span>
+            </div>
+            <pre id="log"></pre>
+          </section>
+
+          <section class="panel examples-panel">
+            <div class="card-head">
+              <p class="eyebrow">Sample Sheets</p>
+              <span id="exampleCount">0</span>
+            </div>
+            <div class="examples" id="examples"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
